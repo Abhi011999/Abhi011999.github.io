@@ -1,0 +1,56 @@
+/*
+ * Links
+ */
+a,
+a:link  {
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+a:hover {
+  color: #cccccc;
+  cursor: pointer;
+}
+a:active {
+  color: #3399ff;
+}
+
+/*
+ * Base structure
+ */
+html,
+body {
+  height: 100%;
+  background-color: #1a1a1a;
+}
+
+body {
+  display: flex;
+  color: #ffffff;
+  box-shadow: inset 0 0 15rem rgba(0, 0, 0, .7);
+}
+
+.cover-container {
+  max-width: 50em;
+}
+
+/*
+ * Header
+ */
+.masthead {
+  margin-top: 1rem;
+}
+
+/*
+ * Cover
+ */
+.cover {
+  padding: 0 1.5rem;
+}
+
+/*
+ * Footer
+ */
+.mastfoot {
+  color: rgba(255, 255, 255, .5);
+}
