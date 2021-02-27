@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'themes.dart';
 
 void main() {
   runApp(
     MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Website',
+      theme: lightTheme,
+      darkTheme: darkTheme,
+      themeMode: ThemeMode.system,
+      title: 'Portfolio',
       home: WebApp(),
     ),
   );
@@ -16,15 +21,23 @@ class WebApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white.withOpacity(0.75),
-        title: Text("Website", style: TextStyle(color: Colors.black),),
+        title: Text(
+          "Home",
+          style: GoogleFonts.raleway(
+            fontSize: 60.0,
+            fontWeight: FontWeight.bold
+          ),
+        ),
       ),
       body: Center(
         child: TypewriterAnimatedTextKit(
           text: [
             "Do not test bugs out, design them out",
           ],
-          textStyle: TextStyle(fontSize: 80.0),
+          textStyle: GoogleFonts.raleway(
+            fontSize: 80.0,
+            fontWeight: FontWeight.bold
+          ),
           textAlign: TextAlign.start,
           speed: Duration(milliseconds: 100),
           curve: Curves.easeInOut,
