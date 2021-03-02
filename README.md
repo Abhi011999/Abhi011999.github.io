@@ -1,4 +1,4 @@
-# abhi011999_personal_website
+# abhi011999_personal_website | [![Build & Deploy CI](https://github.com/Abhi011999/Abhi011999.github.io/actions/workflows/build_deploy.yml/badge.svg?branch=dev)](https://github.com/Abhi011999/Abhi011999.github.io/actions/workflows/build_deploy.yml)
 
 A new Flutter project.
 
