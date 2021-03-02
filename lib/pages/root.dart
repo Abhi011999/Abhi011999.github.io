@@ -1,7 +1,11 @@
+import 'package:abhi011999_personal_website/pages/about.dart';
+import 'package:abhi011999_personal_website/pages/contact.dart';
 import 'package:abhi011999_personal_website/pages/landing.dart';
+import 'package:abhi011999_personal_website/pages/projects.dart';
 import 'package:after_layout/after_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:animations/animations.dart';
 
 class RootPage extends StatefulWidget {
   @override
@@ -11,6 +15,14 @@ class RootPage extends StatefulWidget {
 class _RootPageState extends State<RootPage> with AfterLayoutMixin<RootPage> {
   bool _appBarHeaderText = false;
   int _appBarSelectedButtonIndex = 1;
+  List<Widget> _pages = [
+    LandingPage(),
+    ProjectsPage(),
+    AboutPage(),
+    ContactPage(),
+  ];
+  Widget _currentPage;
+  bool _reversePage = false;
 
   TextStyle appBarButtonsTextStyle = GoogleFonts.raleway(
     color: Colors.black,
@@ -21,6 +33,7 @@ class _RootPageState extends State<RootPage> with AfterLayoutMixin<RootPage> {
   @override
   void initState() {
     super.initState();
+    _currentPage = _pages[0];
   }
 
   @override
@@ -54,7 +67,9 @@ class _RootPageState extends State<RootPage> with AfterLayoutMixin<RootPage> {
               TextButton(
                 onPressed: () {
                   setState(() {
+                    _reversePage = _appBarSelectedButtonIndex > 1 ? true : false;
                     _appBarSelectedButtonIndex = 1;
+                    _currentPage = _pages[0];
                   });
                 },
                 child: Column(
@@ -83,7 +98,9 @@ class _RootPageState extends State<RootPage> with AfterLayoutMixin<RootPage> {
               TextButton(
                 onPressed: () {
                   setState(() {
+                    _reversePage = _appBarSelectedButtonIndex > 2 ? true : false;
                     _appBarSelectedButtonIndex = 2;
+                    _currentPage = _pages[1];
                   });
                 },
                 child: Column(
@@ -112,7 +129,9 @@ class _RootPageState extends State<RootPage> with AfterLayoutMixin<RootPage> {
               TextButton(
                 onPressed: () {
                   setState(() {
+                    _reversePage = _appBarSelectedButtonIndex > 3 ? true : false;
                     _appBarSelectedButtonIndex = 3;
+                    _currentPage = _pages[2];
                   });
                 },
                 child: Column(
@@ -141,7 +160,9 @@ class _RootPageState extends State<RootPage> with AfterLayoutMixin<RootPage> {
               TextButton(
                 onPressed: () {
                   setState(() {
+                    _reversePage = _appBarSelectedButtonIndex > 4 ? true : false;
                     _appBarSelectedButtonIndex = 4;
+                    _currentPage = _pages[3];
                   });
                 },
                 child: Column(
@@ -171,7 +192,21 @@ class _RootPageState extends State<RootPage> with AfterLayoutMixin<RootPage> {
           )
         ],
       ),
-      body: LandingPage(),
+      body: PageTransitionSwitcher(
+        reverse: _reversePage,
+        transitionBuilder: (
+          Widget child,
+          Animation<double> primaryAnimation,
+          Animation<double> secondaryAnimation,
+        ) =>
+            SharedAxisTransition(
+          animation: primaryAnimation,
+          secondaryAnimation: secondaryAnimation,
+          transitionType: SharedAxisTransitionType.horizontal,
+          child: child,
+        ),
+        child: _currentPage,
+      ),
     );
   }
 }
