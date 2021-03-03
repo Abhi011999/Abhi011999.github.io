@@ -1,8 +1,9 @@
+import 'package:abhi011999_personal_website/widgets/frosted_app_bar.dart';
 import 'package:abhi011999_personal_website/pages/about.dart';
 import 'package:abhi011999_personal_website/pages/contact.dart';
 import 'package:abhi011999_personal_website/pages/landing.dart';
 import 'package:abhi011999_personal_website/pages/projects.dart';
-import 'package:after_layout/after_layout.dart';
+import 'package:abhi011999_personal_website/utils/after_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:animations/animations.dart';
@@ -21,7 +22,7 @@ class _RootPageState extends State<RootPage> with AfterLayoutMixin<RootPage> {
     AboutPage(),
     ContactPage(),
   ];
-  Widget _currentPage;
+  late Widget _currentPage;
   bool _reversePage = false;
 
   TextStyle appBarButtonsTextStyle = GoogleFonts.raleway(
@@ -44,7 +45,12 @@ class _RootPageState extends State<RootPage> with AfterLayoutMixin<RootPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      extendBodyBehindAppBar: true,
+      backgroundColor: Colors.white,
+      appBar: FrostedAppBar(
+        backgroundColor: Theme.of(context).appBarTheme.backgroundColor!.withOpacity(0.5),
+        blurStrengthX: 20.0,
+        blurStrengthY: 20.0,
         toolbarHeight: 75,
         elevation: 10.0,
         title: AnimatedOpacity(
@@ -82,10 +88,10 @@ class _RootPageState extends State<RootPage> with AfterLayoutMixin<RootPage> {
                     SizedBox(height: 7.5),
                     AnimatedOpacity(
                       opacity: _appBarSelectedButtonIndex == 1 ? 1.0 : 0.0,
-                      duration: Duration(seconds: 1),
+                      duration: Duration(milliseconds: 500),
                       child: ClipOval(
                         child: Container(
-                          color: Colors.blue,
+                          color: Colors.black,
                           height: 10,
                           width: 10,
                         ),
@@ -113,10 +119,10 @@ class _RootPageState extends State<RootPage> with AfterLayoutMixin<RootPage> {
                     SizedBox(height: 7.5),
                     AnimatedOpacity(
                       opacity: _appBarSelectedButtonIndex == 2 ? 1.0 : 0.0,
-                      duration: Duration(seconds: 1),
+                      duration:  Duration(milliseconds: 500),
                       child: ClipOval(
                         child: Container(
-                          color: Colors.blue,
+                          color: Colors.black,
                           height: 10,
                           width: 10,
                         ),
@@ -144,10 +150,10 @@ class _RootPageState extends State<RootPage> with AfterLayoutMixin<RootPage> {
                     SizedBox(height: 7.5),
                     AnimatedOpacity(
                       opacity: _appBarSelectedButtonIndex == 3 ? 1.0 : 0.0,
-                      duration: Duration(seconds: 1),
+                      duration:  Duration(milliseconds: 500),
                       child: ClipOval(
                         child: Container(
-                          color: Colors.blue,
+                          color: Colors.black,
                           height: 10,
                           width: 10,
                         ),
@@ -175,10 +181,10 @@ class _RootPageState extends State<RootPage> with AfterLayoutMixin<RootPage> {
                     SizedBox(height: 7.5),
                     AnimatedOpacity(
                       opacity: _appBarSelectedButtonIndex == 4 ? 1.0 : 0.0,
-                      duration: Duration(seconds: 1),
+                      duration:  Duration(milliseconds: 500),
                       child: ClipOval(
                         child: Container(
-                          color: Colors.blue,
+                          color: Colors.black,
                           height: 10,
                           width: 10,
                         ),
@@ -193,6 +199,7 @@ class _RootPageState extends State<RootPage> with AfterLayoutMixin<RootPage> {
         ],
       ),
       body: PageTransitionSwitcher(
+        duration: Duration(milliseconds: 500),
         reverse: _reversePage,
         transitionBuilder: (
           Widget child,
