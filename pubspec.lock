@@ -57,6 +57,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.15.0"
+  create_atom:
+    dependency: "direct main"
+    description:
+      name: create_atom
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.1.0-nullsafety"
   crypto:
     dependency: transitive
     description:
